@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container">
+        <h2 class="text-center mt-4 mb-4">PAINEL DE PRODUTO</h2>
+
+
+        <div class="container">
+            <div class="row mb-4">
+                <div class="">
+                    <a class="btn btn-success" href="../cadastroProduto/index.html">Cadastrar</a>
+                    <a class="btn btn-primary " href="../../index.html">Voltar</a>
+                </div>
+            </div>
+
+            <form>
+                <div class="input-group input-sm">
+                    <input type="text" class="form-control input-sm mb-3" id="nomeProduto">
+
+                </div>
+            </form>
+
+            <div class="mt-4">
+                <div id="titulo">
+                <h2 class="mb-3">Lista de produtos</h2>
+                </div>
+                <div id="lista">
+                    <div class="col-12">
+                        <div id="spanAlert"></div>
+                        <div id ="tabelaTitulo" >
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="col">
+                                    <label for="">Imagem</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Código produto</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Nome</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Preço</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Preço atacado</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Remover</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Editar</label>
+                                </th>
+                            </tr>
+                            <tbody id="tabelaProduto">
+                                
+                            </tbody>
+                        </table>
+                    </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

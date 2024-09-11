@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CADASTRO PRODUTOS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+</head>
+
+<body>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container">
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" id="nomeProduto" placeholder="DIGITE O PRODUTO">
+        <button class="btn btn-outline-success" id="buscarProdutos">BUSCAR</button>
+
+      </form>
+
+      <a class="navbar-brand">DISTRIBUIDORA DE BEBIDAS DOSE DUPLA</a>
+
+    </div>
+  </nav>
+
+<div class="container">
+
+  <form class="row g-3">
+
+    <div class="col-md-4">
+      <label for="nomeProduto" class="form-label">NOME DO PRODUTO</label>
+      <input type="text" class="form-control" id="nomeProdutohtml"  value="">
+    </div>
+
+    <div class="col-md-4">
+      <label for="codigoBarra" class="form-label">CODIGO DE BARRA</label>
+      <input type="text" class="form-control" id="codigoBarra" name="barra" value="">
+    </div>
+   
+    
+    <div class="col-md-4">
+      <label for="estoueMinimo" class="form-label">ESTOQUE MINIMO</label>
+      <input type="number" class="form-control" id="estoqueMinimo" placeholder="ENTRE COM O ESTOQUE MINIMO EM DIAS">
+    </div>
+
+    <div class="col-md-4">
+      <label for="precoVarejo" class="form-label">PRECO VAREJO</label>
+      <input type="number" format="currency" precision="2" class="form-control" id="precoVarejo">
+    </div>
+
+    <div class="col-md-4">
+      <label for="precoAtacado" class="form-label">PRECO ATACADO</label>
+      <input type="number" format="currency" precision="2" class="form-control" id="precoAtacado">
+    </div>
+
+    <div class="col-md-4">
+      <label for="quantidadeAtacado" class="form-label">QUANTIDADE ATACADO</label>
+      <input type="number" class="form-control" id="quantidadeAtacado">
+    </div>
+
+    <div class="col-md-4">
+      <label for="comissao" class="form-label">PERCENTUAL DE COMISSÃO</label>
+      <input type="number" class="form-control" id="comissao">
+    </div>
+
+    <div class="col-md-4">
+      <label for="escaninho" class="form-label">ESCANINHO</label>
+      <input type="number" class="form-control" id="escaninho">
+    </div>
+
+    <div class="col-md-4">
+      <label for="tipoProduto" class="form-label">TIPO PRODUTO</label>
+      <select id="tipoProduto" class="form-select">
+        <option selected>REVENDA</option>
+        <OPtion>IMOBILIZADO</OPtion>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="entradaURL" class="form-label">URL</label>
+      <input type="url" class="form-control" id="url" placeholder="ENTRE COM O ENDEREÇO DA IMAGEM">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-outline-success">SALVAR</button>
+    </div>
+
+  </form>
+</div>
+  <div class="container">
+  <div  class="row" id="produtos"> </div>
+</div>
+
+
+
+  <script type="module" src="./cadastroProduto.js"></script>
+
+</body>
+
+</html>

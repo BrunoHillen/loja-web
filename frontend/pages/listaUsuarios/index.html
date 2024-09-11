@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container">
+        <h2 class="text-center mt-4 mb-4">CADASTRO DE COMPRAS </h2>
+
+
+        <div class="container">
+            <div class="row mb-4">
+                <div class="">
+                    <a class="btn btn-primary " href="../../index.html">Voltar</a>
+                </div>
+            </div>
+            <div>
+                <label for="notaFiscal">ENTRE COM O NÚMERO DA NOTA FISCAL</label>
+                <input type="text" class="form-control input-sm mb-3" id="notaFiscal">
+                <label for="notaFiscal">ID DO FORNECEDOR</label>
+                <input type="text" class="form-control input-sm mb-3" id="idUsuario">
+                <label for="notaFiscal">NOME DO FORNECEDOR</label>
+                <input type="text" class="form-control input-sm mb-3" id="nomeFornecedor">
+            </div>
+
+            
+
+            <div class="mt-4">
+                <div id="lista">
+                    <div class="col-12">
+                        <h2 class="mb-3" id="tituloTabela">Lista de usuários</h2>
+                        <form>
+                            <div class="input-group input-sm">
+                                <input type="text" class="form-control input-sm mb-3" id="nomeUsuario">
+            
+                            </div>
+                        </form>
+                        <div id="spanAlert"></div>
+                        <table class="table table-striped" id="tabelaUsuarios">
+                            <tr>
+                                <th scope="col">
+                                    <label for="">Id</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">Nome</label>
+                                </th>
+                                <th scope="col">
+                                    <label for="">escolher</label>
+                                </th>
+                                
+                            </tr>
+                            <tbody id="tabelaUsuario">
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

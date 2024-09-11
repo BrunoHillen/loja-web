@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV Supermercado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PDV Supermercado</h1>
+        
+        <div class="form-group">
+            <label for="cliente">Cliente</label>
+            <input type="text" id="cliente" readonly>
+            <button id="buscarClienteBtn">Buscar Cliente</button>
+        </div>
+
+        <div class="form-group">
+            <label for="produto">Produto</label>
+            <input type="text" id="produto" readonly>
+            <button id="buscarProdutoBtn">Buscar Produto</button>
+        </div>
+
+        <div class="form-group">
+            <label for="notaFiscal">Nota Fiscal</label>
+            <input type="text" id="notaFiscal">
+        </div>
+
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade">
+        </div>
+
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input type="text" id="preco" readonly>
+        </div>
+
+        <button id="finalizarVendaBtn">Finalizar Venda</button>
+    </div>
+
+    <!-- Modal Cliente -->
+    <div id="clienteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeClienteModal">&times;</span>
+            <h2>Buscar Cliente</h2>
+            <input type="text" id="buscarClienteInput" placeholder="Nome do Cliente">
+            <button id="buscarClienteConfirmBtn">Buscar</button>
+            <div id="clienteResultados"></div>
+        </div>
+    </div>
+
+    <!-- Modal Produto -->
+    <div id="produtoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeProdutoModal">&times;</span>
+            <h2>Buscar Produto</h2>
+            <input type="text" id="buscarProdutoInput" placeholder="Nome do Produto">
+            <button id="buscarProdutoConfirmBtn">Buscar</button>
+            <div id="produtoResultados"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
