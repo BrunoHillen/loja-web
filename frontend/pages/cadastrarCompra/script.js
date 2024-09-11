@@ -4,15 +4,12 @@ import { getLastPedido } from "../../fetchApi/getLastPedido.js";
 import { getProdutoCodBarra } from "../../fetchApi/getProdutoCodBarra.js";
 import { getProdutoId } from "../../fetchApi/getProdutoId.js";
 import { getUsersName } from "../../fetchApi/getUsersName.js";
-
-
-
+import '../../style.css';
 
 const btnLocalizarFornecedor = document.getElementById("localizar");
 const inputNomeFornecedor = document.getElementById("fornecedor");
 const divResultado = document.getElementById("resultado");
 const divResultadoFornecedor = document.getElementById("resultado-fornecedor");
-//const listaUsuarios = document.getElementById("listaUsuarios");
 const btnAdicionarPedido = document.getElementById("btnAdicionarCompra");
 const inputNotaFiscal = document.getElementById("notaFiscal");
 const inputIdProduto = document.getElementById("idProduto");
@@ -20,19 +17,15 @@ const inputCodigoBarra = document.getElementById("codigoBarra");
 const inputPreco = document.getElementById("preco");
 const divResultadoProduto = document.getElementById("resultadoProduto");
 const inputQuantidade = document.getElementById("quantidadeCompra");
-//const divResultadoItens = document.getElementById("resultadoItens");
 const tabelaItem = document.getElementById("tabelaItem");
-//const tabelaItens = document.getElementById("tabelaItens");
 const buscarProduto = document.getElementById("buscarProduto");
 const totalPedido = document.getElementById("totalPedido");
-const modalPagamento = document.getElementById("modalPagamento");
 const btnGerarParcelas = document.getElementById("btnGerarParcelas");
 const container = document.getElementById("container-inputs");
 const parcelas = document.getElementById("parcelas");
 const btnSalvarParcelas = document.getElementById("btnSalvarParcelas")
+
 let contador = 1;
-
-
 let idProduto = null
 let btnEdit = null;
 let idUsuarioFk = null;
@@ -71,7 +64,6 @@ async function createElements(data) {
 
 
 async function inserirItens() {
-
     const data = {
 
         "quantidadeVenda": "0",
@@ -108,9 +100,6 @@ btnAdicionarPedido.addEventListener("click", async (event) => {
         btnLocalizarFornecedor.disabled = true;
         inputNomeFornecedor.disabled = true;
         inserirItens();
-
-
-
     } else {
         alert(idCompra);
         inserirItens();
@@ -118,7 +107,7 @@ btnAdicionarPedido.addEventListener("click", async (event) => {
     }
     inputQuantidade.value = 0;
     inputPreco.value = 0;
-})
+});
 
 btnLocalizarFornecedor.addEventListener("click", async (event) => {
     event.preventDefault();
@@ -126,7 +115,7 @@ btnLocalizarFornecedor.addEventListener("click", async (event) => {
     const nomeFornecedor = inputNomeFornecedor.value;
     const result = await getUsersName(nomeFornecedor);
     const resultados = result.data.resultados;
-    console.log(resultados);
+
     divResultado.innerHTML = "";
     resultados.map((element, index) => (
         divResultado.innerHTML += `
@@ -138,7 +127,6 @@ btnLocalizarFornecedor.addEventListener("click", async (event) => {
             </div> 
         `
     ))
-    console.log(result.data.resultados);
 
     btnEdit = document.querySelectorAll(".btnEdit");
     let id = null;
@@ -152,68 +140,50 @@ btnLocalizarFornecedor.addEventListener("click", async (event) => {
             divResultadoFornecedor.innerHTML = `<p >${nome}</p>`;
 
             idUsuarioFk = id.split(",")[0];
-            console.log(idUsuarioFk);
-            console.log(id)
-
-
-            //window.location.href = `../painelEditarUsuario/index.html?${id}`
-
         })
-    })
-
-})
+    });
+});
 
 async function createElementsProduto(result) {
     let idProdutoStr = null;
     const resultados = result.data.resultados;
-    console.log("resultados", resultados);
-    inputPreco.value = result.data.resultados[0].preco
-    idProdutoStr = result.data.resultados[0].idProduto
-    nomeProduto = result.data.resultados[0].nomeProduto
-    idProduto = parseInt(idProdutoStr);
-    console.log(idProduto);
 
-    divResultadoProduto.innerHTML = " ";
+    inputPreco.value = result.data.resultados[0].preco;
+    idProdutoStr = result.data.resultados[0].idProduto;
+    nomeProduto = result.data.resultados[0].nomeProduto;
+    idProduto = parseInt(idProdutoStr);
+
+    divResultadoProduto.innerHTML = "";
     resultados.map((element, index) => (
         divResultadoProduto.innerHTML += `<p>${nomeProduto}</p>`
-    ))
+    ));
 }
 function limpandoInputs() {
-    inputIdProduto.value = ""
-    inputCodigoBarra.value = ""
+    inputIdProduto.value = "";
+    inputCodigoBarra.value = "";
     return null;
 }
 
 function adicionarInput() {
     container.innerHTML = "";
-    for (contador = 1; contador <= parcelas.value; contador++) {
+    for (let element = 1; element <= parcelas.value; element++) {
+        const getDataAtual = () => {
+            const hoje = new Date();
+            const ano = hoje.getFullYear();
+            const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+            const dia = String(hoje.getDate()).padStart(2, '0');
+            return `${ano}-${mes}-${dia}`;
+        };
 
-        const novaLabel = document.createElement("label");
-        novaLabel.htmlFor = "input" + contador;
-        novaLabel.textContent = "parcela" + contador + ":";
+        container.innerHTML += `
+            <div class="d-flex mt-2 mb-2 gap-2">
+                <input type="date" id="data${element}" name="data" value="${getDataAtual()}" placeholder="Digite uma data" class="form-control inputsData"/>
+                <input type="number" id="pagamento${element}" name="pagamento" placeholder="Digite o valor da parcela" class="form-control inputsPagamento"/>
+            </div>
+        `;
+    };
+};
 
-        const novoInput = document.createElement("input");
-        novoInput.type = "date";
-        novoInput.name = "inputs[]"; // Define o nome do input como um array para envio
-        novoInput.id = "input" + contador;
-        novoInput.placeholder = "Digite algo";
-        console.log(novoInput.id)
-        const novoInputB = document.createElement("input");
-        novoInputB.type = "number";
-        novoInputB.name = "inputs[]"; // Define o nome do input como um array para envio
-        novoInputB.id = "inputB" + contador;
-        novoInputB.placeholder = "Digite algo";
-        console.log(novoInputB.id)
-        const container = document.getElementById("container-inputs");
-
-        // Adiciona o novo input ao container
-        container.appendChild(novaLabel);
-        container.appendChild(novoInput);
-        container.appendChild(novoInputB);
-        container.appendChild(document.createElement("br"));
-      
-    }
-}
 buscarProduto.addEventListener('click', async (event) => {
     event.preventDefault();
 
@@ -221,27 +191,27 @@ buscarProduto.addEventListener('click', async (event) => {
         const result = await getProdutoCodBarra(inputCodigoBarra.value);
         limpandoInputs();
         return await createElementsProduto(result);
-
-    }
+    };
 
     if (inputIdProduto.value) {
         const result = await getProdutoId(inputIdProduto.value);
         limpandoInputs();
         return await createElementsProduto(result);
-    }
+    };
 })
-
-
 
 btnGerarParcelas.addEventListener('click', async (event) => {
 
     adicionarInput();
-})
+});
 
-btnSalvarParcelas.addEventListener('click', async (event) =>{
+btnSalvarParcelas.addEventListener('click', async (event) => {
     event.preventDefault();
-    
-         
-    console.log(inputB1);
+    const inputsPagamentos = document.querySelectorAll('.inputsPagamento');
+    const inputsData = document.querySelectorAll('.inputsData');
 
-})
+    inputsPagamentos.forEach((element, index) => {
+        console.log(element.value);
+        console.log(inputsData[index].value);
+    });
+});

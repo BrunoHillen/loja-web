@@ -1,0 +1,40 @@
+body {
+    background-color: #ededed;
+}
+
+p {
+    font-size: 22px;
+}
+
+.p-text {
+    font-size: 16px;
+}
+
+.btn-primary:disabled {
+    background-color: rgba(255, 166, 0, 0.603) !important;
+    color: black;
+    border: none;
+}
+
+.bg-primary {
+    background-color: orange !important;
+}
+
+.btn-primary {
+    background-color: orange !important;
+    border: 1px solid black;
+    color: black;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #ffc340 !important;
+    border: 1px solid black;
+    color: black;
+    font-weight: 500;
+}
+
+th {
+    font-weight: 600;
+    background-color: orange !important;
+}
